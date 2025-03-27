@@ -1,0 +1,36 @@
+# Bật Rewrite Engine để viết lại URL
+RewriteEngine On
+
+# Chuyển hướng truy cập không có www thành www (nếu cần)
+RewriteCond %{HTTP_HOST} ^localhost$ [NC]
+RewriteRule ^(.*)$ http://www.localhost/$1 [R=301,L]
+
+# Viết lại URL để không cần nhập index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+# Chặn truy cập trực tiếp vào thư mục nhạy cảm
+<FilesMatch "config\.php|database\.php">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Tăng bảo mật bằng cách vô hiệu hóa duyệt thư mục
+Options -Indexes
+
+# Đặt mặc định file index.php
+DirectoryIndex index.php
+
+# Cho phép CORS (Nếu bạn gọi API từ domain khác)
+Header set Access-Control-Allow-Origin "*"
+
+# Tăng hiệu suất bằng cách bật bộ nhớ đệm
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 1 hour"
+    ExpiresByType image/jpeg "access plus 1 week"
+    ExpiresByType image/png "access plus 1 week"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>

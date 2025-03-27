@@ -1,0 +1,61 @@
+/* Định dạng toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Màu nền xám nhạt */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Hộp chứa form đăng nhập */
+.login-container {
+    background: #6a0dad; /* Màu tím */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+    color: white; /* Chữ màu trắng */
+}
+
+/* Tiêu đề */
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Ô nhập liệu */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Nút đăng nhập */
+button {
+    width: 100%;
+    padding: 12px;
+    background: white; /* Nút trắng */
+    color: #6a0dad; /* Chữ tím */
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #f8f8f8; /* Nút sáng hơn khi hover */
+}
+
+/* Thông báo lỗi */
+.error {
+    color: #ffcccb;
+    margin-top: 10px;
+    font-size: 14px;
+}
